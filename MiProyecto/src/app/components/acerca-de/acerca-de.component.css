@@ -14,7 +14,7 @@ div{
         width: 15%;
         border-radius: 100%;
         box-shadow: 3px 3px 3px grey;
-        left: 5%;
+        left: 3%;
         top: 600px;
 
     }
@@ -23,11 +23,12 @@ div{
 @media (min-width: 575px){
     #fotocv{
         position: absolute;
-        width: 30%;
+        width: 10%;
         border-radius: 100%;
         box-shadow: 3px 3px 3px grey;
-        left: 30%;
+        left: 7%;
         top: 630px;
+        
 
     }
 }
@@ -40,6 +41,3 @@ div{
     
 }
 
-img{
-    width: 1%;
-}
