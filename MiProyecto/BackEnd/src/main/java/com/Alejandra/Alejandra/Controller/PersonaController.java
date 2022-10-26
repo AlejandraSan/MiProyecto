@@ -9,6 +9,7 @@ import com.Alejandra.Alejandra.Entity.Persona;
 import com.Alejandra.Alejandra.Interface.IPersonaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,12 +27,14 @@ public class PersonaController {
     @Autowired IPersonaService ipersonaService;
    
     //@GetMapping trae de la base de datos al frontend
+    //tanto USER como ADMIN pueden ver las personas
     @GetMapping("personas/traer")//ejecuta el metodo cuando voy al localhsot4200
     //el front diferencia dependiendo de la url el tipo de metodo a utilizar
     public List<Persona> getPersona(){
         return ipersonaService.getPersona();
     }
-    
+    //crear personas lo puede hacer el ADMIN
+    @PreAuthorize("hasRole('ADMIN')")  //estar logueado con el rol de ADMIN
     //pedir desde el frontend guardar en la BD
     //crear un usuario
     @PostMapping("/personas/crear")
@@ -39,12 +42,13 @@ public class PersonaController {
        ipersonaService.savePersona(persona);
        return "La perosna fue creada correctamente";
     }
-    
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/personas/borrar/{id}")
     public String deletePersona(@PathVariable Long id){
        ipersonaService.deletePersona(id);
        return " La persona fue eliminada correctamente";
     }
+    @PreAuthorize("hasRole('ADMIN')")
     //url:puerto/personas/editar/4(id)/nombre & apellido & img
     @PutMapping("/personas/editar/{id}")
     public Persona editPersona(@PathVariable Long id,
@@ -53,7 +57,7 @@ public class PersonaController {
                               @RequestParam("apellido") String nuevoApellido,
                               @RequestParam("img") String nuevoImg ){
         Persona persona = ipersonaService.findPersona(id);
-        
+ 
         persona.setNombre(nuevoNombre);
         
         persona.setApellido(nuevoApellido);
@@ -65,11 +69,11 @@ public class PersonaController {
         return persona;
         
     }
-    
+    /*
     @GetMapping("personas/traer/perfil")
     public Persona findPersona(){
         return ipersonaService.findPersona((long)1);
     }
-            
+    */        
     
 }
