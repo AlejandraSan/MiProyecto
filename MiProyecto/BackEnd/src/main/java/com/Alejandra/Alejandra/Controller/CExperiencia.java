@@ -1,7 +1,7 @@
 
 package com.Alejandra.Alejandra.Controller;
 
-import antlr.StringUtils;
+//import antlr.StringUtils;
 import com.Alejandra.Alejandra.Dto.dtoExperiencia;
 import com.Alejandra.Alejandra.Entity.Experiencia;
 import com.Alejandra.Alejandra.Security.Controller.Mensaje;
@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/explab")
 @CrossOrigin(origins = "http://localhost:4200")
-//@CrossOrigin(origins = "https://mgbfrontend.web.app")
 public class CExperiencia {
     @Autowired
     SExperiencia sExperiencia;
@@ -46,7 +45,7 @@ public class CExperiencia {
     }
     
     
-    //crea un nueva experiencia
+    //crea una nueva experiencia
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody dtoExperiencia dtoexp){      
         if(StringUtils.isBlank(dtoexp.getNombreE()))// si el dato es blanco, mostrará el mensaje del return
