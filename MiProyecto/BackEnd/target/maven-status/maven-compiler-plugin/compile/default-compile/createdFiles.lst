@@ -13,6 +13,7 @@ com\Alejandra\Alejandra\Repository\RExperiencia.class
 com\Alejandra\Alejandra\Security\Service\UsuarioService.class
 com\Alejandra\Alejandra\Security\Repository\iUsuarioRepository.class
 com\Alejandra\Alejandra\Entity\Persona.class
+com\Alejandra\Alejandra\WebConfig.class
 com\Alejandra\Alejandra\Service\SExperiencia.class
 com\Alejandra\Alejandra\AlejandraApplication.class
 com\Alejandra\Alejandra\Entity\Experiencia.class
