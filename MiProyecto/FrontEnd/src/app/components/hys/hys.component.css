@@ -8,3 +8,9 @@
     flex-direction: column;
     align-items: center;
 }
+#borde{
+   
+    border:3px solid violet;
+    border-radius:5px 5px 5px 5px;
+     
+ }
